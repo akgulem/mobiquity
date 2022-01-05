@@ -4,4 +4,7 @@
    <FileRef
       location = "group:Mobiquity/Mobiquity.xcodeproj">
    </FileRef>
+   <FileRef
+      location = "group:Network">
+   </FileRef>
 </Workspace>
