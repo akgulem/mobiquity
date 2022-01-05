@@ -14,6 +14,7 @@
 		7672B6D52786210D003C8740 /* MobiquityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D42786210D003C8740 /* MobiquityUITests.swift */; };
 		7672B6D72786210D003C8740 /* MobiquityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */; };
 		7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */; };
+		7672B6ED27862764003C8740 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 7672B6EC27862764003C8740 /* Network */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -52,6 +53,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7672B6ED27862764003C8740 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,6 +81,7 @@
 				7672B6C92786210D003C8740 /* MobiquityTests */,
 				7672B6D32786210D003C8740 /* MobiquityUITests */,
 				7672B6B127862109003C8740 /* Products */,
+				7672B6EB27862764003C8740 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -161,6 +164,13 @@
 			path = Cells;
 			sourceTree = "<group>";
 		};
+		7672B6EB27862764003C8740 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -178,6 +188,9 @@
 			dependencies = (
 			);
 			name = Mobiquity;
+			packageProductDependencies = (
+				7672B6EC27862764003C8740 /* Network */,
+			);
 			productName = Mobiquity;
 			productReference = 7672B6B027862109003C8740 /* Mobiquity.app */;
 			productType = "com.apple.product-type.application";
@@ -663,6 +676,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7672B6EC27862764003C8740 /* Network */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Network;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7672B6A827862109003C8740 /* Project object */;
 }
