@@ -15,6 +15,17 @@
 		7672B6D72786210D003C8740 /* MobiquityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */; };
 		7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */; };
 		7672B6ED27862764003C8740 /* Network in Frameworks */ = {isa = PBXBuildFile; productRef = 7672B6EC27862764003C8740 /* Network */; };
+		7672B6F52786384B003C8740 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6F32786384B003C8740 /* SearchViewController.swift */; };
+		7672B6F62786384B003C8740 /* SearchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7672B6F42786384B003C8740 /* SearchViewController.xib */; };
+		7672B6F827863860003C8740 /* SearchViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6F727863860003C8740 /* SearchViewPresenter.swift */; };
+		7672B6FA27863869003C8740 /* SearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6F927863869003C8740 /* SearchViewInteractor.swift */; };
+		7672B6FC27863871003C8740 /* SearchViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6FB27863871003C8740 /* SearchViewRouter.swift */; };
+		7672B6FF278638AE003C8740 /* BaseViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6FE278638AE003C8740 /* BaseViewInterface.swift */; };
+		7672B702278638CD003C8740 /* CollectionViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B701278638CD003C8740 /* CollectionViewInterface.swift */; };
+		7672B70427863910003C8740 /* BaseViewPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70327863910003C8740 /* BaseViewPresenterInterface.swift */; };
+		7672B7072786397C003C8740 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B7062786397C003C8740 /* UIViewController+Extension.swift */; };
+		7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */; };
+		7672B70C27863AFA003C8740 /* BaseInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +57,17 @@
 		7672B6D42786210D003C8740 /* MobiquityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITests.swift; sourceTree = "<group>"; };
 		7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
+		7672B6F32786384B003C8740 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		7672B6F42786384B003C8740 /* SearchViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = SearchViewController.xib; sourceTree = "<group>"; };
+		7672B6F727863860003C8740 /* SearchViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewPresenter.swift; sourceTree = "<group>"; };
+		7672B6F927863869003C8740 /* SearchViewInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewInteractor.swift; sourceTree = "<group>"; };
+		7672B6FB27863871003C8740 /* SearchViewRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewRouter.swift; sourceTree = "<group>"; };
+		7672B6FE278638AE003C8740 /* BaseViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewInterface.swift; sourceTree = "<group>"; };
+		7672B701278638CD003C8740 /* CollectionViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewInterface.swift; sourceTree = "<group>"; };
+		7672B70327863910003C8740 /* BaseViewPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseViewPresenterInterface.swift; sourceTree = "<group>"; };
+		7672B7062786397C003C8740 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
+		7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPresenterInterface.swift; sourceTree = "<group>"; };
+		7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorOutput.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -138,6 +160,7 @@
 		7672B6E42786239A003C8740 /* Scenes */ = {
 			isa = PBXGroup;
 			children = (
+				7672B6F227863769003C8740 /* Search Scene */,
 			);
 			path = Scenes;
 			sourceTree = "<group>";
@@ -146,6 +169,7 @@
 			isa = PBXGroup;
 			children = (
 				7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */,
+				7672B7062786397C003C8740 /* UIViewController+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -153,6 +177,9 @@
 		7672B6E6278623B0003C8740 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7672B6FD2786389C003C8740 /* View Protocols */,
+				7672B70527863936003C8740 /* Presenter Protocols */,
+				7672B70A27863ADA003C8740 /* Interactor Protocols */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -169,6 +196,44 @@
 			children = (
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7672B6F227863769003C8740 /* Search Scene */ = {
+			isa = PBXGroup;
+			children = (
+				7672B6F32786384B003C8740 /* SearchViewController.swift */,
+				7672B6F42786384B003C8740 /* SearchViewController.xib */,
+				7672B6F727863860003C8740 /* SearchViewPresenter.swift */,
+				7672B6F927863869003C8740 /* SearchViewInteractor.swift */,
+				7672B6FB27863871003C8740 /* SearchViewRouter.swift */,
+			);
+			path = "Search Scene";
+			sourceTree = "<group>";
+		};
+		7672B6FD2786389C003C8740 /* View Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7672B6FE278638AE003C8740 /* BaseViewInterface.swift */,
+				7672B701278638CD003C8740 /* CollectionViewInterface.swift */,
+			);
+			path = "View Protocols";
+			sourceTree = "<group>";
+		};
+		7672B70527863936003C8740 /* Presenter Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7672B70327863910003C8740 /* BaseViewPresenterInterface.swift */,
+				7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */,
+			);
+			path = "Presenter Protocols";
+			sourceTree = "<group>";
+		};
+		7672B70A27863ADA003C8740 /* Interactor Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */,
+			);
+			path = "Interactor Protocols";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -281,6 +346,7 @@
 			files = (
 				7672B6C02786210C003C8740 /* LaunchScreen.storyboard in Resources */,
 				7672B6BD2786210C003C8740 /* Assets.xcassets in Resources */,
+				7672B6F62786384B003C8740 /* SearchViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -325,7 +391,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7672B702278638CD003C8740 /* CollectionViewInterface.swift in Sources */,
+				7672B6F52786384B003C8740 /* SearchViewController.swift in Sources */,
+				7672B6FC27863871003C8740 /* SearchViewRouter.swift in Sources */,
+				7672B70427863910003C8740 /* BaseViewPresenterInterface.swift in Sources */,
+				7672B70C27863AFA003C8740 /* BaseInteractorOutput.swift in Sources */,
+				7672B6FA27863869003C8740 /* SearchViewInteractor.swift in Sources */,
+				7672B6FF278638AE003C8740 /* BaseViewInterface.swift in Sources */,
+				7672B6F827863860003C8740 /* SearchViewPresenter.swift in Sources */,
+				7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */,
 				7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */,
+				7672B7072786397C003C8740 /* UIViewController+Extension.swift in Sources */,
 				7672B6B427862109003C8740 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
