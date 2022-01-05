@@ -19,6 +19,8 @@ final class SearchViewController: UIViewController {
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var collectionView: UICollectionView!
 
+    private var searchHelper: SearchHelper!
+
     // MARK: Presenter
     var presenter: SearchViewPresenterInterface!
 
@@ -32,6 +34,7 @@ extension SearchViewController: SearchViewInterface {
 
     func prepareSearchBar() {
         searchBar.delegate = self
+        prepareSearchHelper()
     }
 
     func prepareCollectionView() {
@@ -46,6 +49,9 @@ extension SearchViewController: SearchViewInterface {
 
 extension SearchViewController: UISearchBarDelegate {
 
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        searchHelper.handleTyping(text: searchText)
+    }
 }
 
 extension SearchViewController: UICollectionViewDataSource {
@@ -64,4 +70,16 @@ extension SearchViewController: UICollectionViewDataSource {
 
 extension SearchViewController: UICollectionViewDelegate {
 
+}
+
+// MARK: Helper Methods
+
+private extension SearchViewController {
+
+    func prepareSearchHelper() {
+        searchHelper = SearchHelper { [weak self] text in
+            guard let self = self else { return }
+            
+        }
+    }
 }

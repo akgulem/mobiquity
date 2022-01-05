@@ -26,6 +26,7 @@
 		7672B7072786397C003C8740 /* UIViewController+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B7062786397C003C8740 /* UIViewController+Extension.swift */; };
 		7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */; };
 		7672B70C27863AFA003C8740 /* BaseInteractorOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */; };
+		7672B70F27863EB4003C8740 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70E27863EB4003C8740 /* SearchHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -68,6 +69,7 @@
 		7672B7062786397C003C8740 /* UIViewController+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIViewController+Extension.swift"; sourceTree = "<group>"; };
 		7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewPresenterInterface.swift; sourceTree = "<group>"; };
 		7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BaseInteractorOutput.swift; sourceTree = "<group>"; };
+		7672B70E27863EB4003C8740 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -177,6 +179,7 @@
 		7672B6E6278623B0003C8740 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				7672B70D27863EA2003C8740 /* Helpers */,
 				7672B6FD2786389C003C8740 /* View Protocols */,
 				7672B70527863936003C8740 /* Presenter Protocols */,
 				7672B70A27863ADA003C8740 /* Interactor Protocols */,
@@ -234,6 +237,14 @@
 				7672B70B27863AFA003C8740 /* BaseInteractorOutput.swift */,
 			);
 			path = "Interactor Protocols";
+			sourceTree = "<group>";
+		};
+		7672B70D27863EA2003C8740 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7672B70E27863EB4003C8740 /* SearchHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -397,6 +408,7 @@
 				7672B70427863910003C8740 /* BaseViewPresenterInterface.swift in Sources */,
 				7672B70C27863AFA003C8740 /* BaseInteractorOutput.swift in Sources */,
 				7672B6FA27863869003C8740 /* SearchViewInteractor.swift in Sources */,
+				7672B70F27863EB4003C8740 /* SearchHelper.swift in Sources */,
 				7672B6FF278638AE003C8740 /* BaseViewInterface.swift in Sources */,
 				7672B6F827863860003C8740 /* SearchViewPresenter.swift in Sources */,
 				7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */,
