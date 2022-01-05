@@ -8,6 +8,9 @@
 import Foundation
 
 protocol SearchViewPresenterInterface: BaseViewPresenterInterface, CollectionViewPresenterInterface {
+
+    func clearSearchResults()
+    func searchImages(with text: String)
 }
 
 final class SearchViewPresenter {
@@ -29,6 +32,12 @@ final class SearchViewPresenter {
 }
 
 extension SearchViewPresenter: SearchViewPresenterInterface {
+
+    func clearSearchResults() {
+    }
+
+    func searchImages(with text: String) {
+    }
 
     func viewDidLoad() {
 

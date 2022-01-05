@@ -79,7 +79,8 @@ private extension SearchViewController {
     func prepareSearchHelper() {
         searchHelper = SearchHelper { [weak self] text in
             guard let self = self else { return }
-            
+            self.presenter.clearSearchResults()
+            self.presenter.searchImages(with: text)
         }
     }
 }
