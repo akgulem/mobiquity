@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct PhotosContainerDTO: Decodable {
+public struct PhotosContainerDTO: Decodable {
     
     let photos: Photos?
     let stat: String?
