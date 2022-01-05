@@ -13,6 +13,7 @@
 		7672B6CB2786210D003C8740 /* MobiquityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6CA2786210D003C8740 /* MobiquityTests.swift */; };
 		7672B6D52786210D003C8740 /* MobiquityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D42786210D003C8740 /* MobiquityUITests.swift */; };
 		7672B6D72786210D003C8740 /* MobiquityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */; };
+		7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		7672B6D02786210D003C8740 /* MobiquityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobiquityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7672B6D42786210D003C8740 /* MobiquityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITests.swift; sourceTree = "<group>"; };
 		7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UICollectionView+Extension.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +142,7 @@
 		7672B6E5278623A3003C8740 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -288,6 +291,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */,
 				7672B6B427862109003C8740 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
