@@ -7,7 +7,15 @@
 
 import Foundation
 
-struct ImageSearchParameters {
+public struct ImageSearchParameters {
 
     var text: String
+    var page: Int?
+    var perPage: Int?
+
+    public init() {
+        text = "Pendik"
+        page = 1
+        perPage = 10
+    }
 }
