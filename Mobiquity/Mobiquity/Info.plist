@@ -4,6 +4,11 @@
 <dict>
 	<key>FLICKR_URL_SCHEME</key>
 	<string>https</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
 	<key>FLICKR_BASE_URL</key>
 	<string>www.flickr.com</string>
 	<key>FLICKR_API_KEY</key>
