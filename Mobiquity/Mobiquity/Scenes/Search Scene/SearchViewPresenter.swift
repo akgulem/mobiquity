@@ -50,10 +50,14 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
     }
 
     func searchImages(with text: String) {
+        interactor?.search(with: text)
     }
 
     func viewDidLoad() {
-
+        view?.prepareSearchBar()
+        view?.prepareCollectionView()
+        view?.preparePageTitle()
+        view?.prepareNavigationBar()
     }
 
     func numberOfItems(for section: Int) -> Int {
@@ -66,7 +70,7 @@ extension SearchViewPresenter: SearchViewInteractorOutput {
     func handleDtoTransformation(result: Result<[PhotoDTO], ImageServiceError>) {
         switch result {
         case .success(let data):
-            let cellPresentations = data.map { CellPresentation(id: $0.id ?? "", url: $0.url)}
+            let cellPresentations = data.map { CellPresentation(id: $0.id ?? "", url: $0.getURL())}
             self.cellPresentations.append(contentsOf: cellPresentations)
         case .failure(let error):
             switch error {

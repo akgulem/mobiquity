@@ -62,7 +62,7 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
                     return
                 }
 
-                guard self.page < pageCount - 1 else {
+                guard self.page <= pageCount else {
                     self.output?.handleDtoTransformation(result: .failure(ImageServiceError.photosReachedEnd))
                     return
                 }
