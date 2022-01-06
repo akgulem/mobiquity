@@ -12,7 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Mobiquity" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Mwo-jU-p7C" id="Ctv-FO-MZ1"/>
-                <outlet property="searchBar" destination="1kf-Xu-hY5" id="dm0-nT-MT7"/>
+                <outlet property="searchBar" destination="1kf-Xu-hY5" id="cho-cB-jWq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
         </placeholder>
@@ -25,7 +25,7 @@
                     <rect key="frame" x="0.0" y="44" width="414" height="51"/>
                     <textInputTraits key="textInputTraits"/>
                 </searchBar>
-                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Mwo-jU-p7C">
+                <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" showsHorizontalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Mwo-jU-p7C">
                     <rect key="frame" x="0.0" y="95" width="414" height="767"/>
                     <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="MsT-JE-P6S">

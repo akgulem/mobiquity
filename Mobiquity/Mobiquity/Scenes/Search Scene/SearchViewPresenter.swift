@@ -45,6 +45,9 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
     }
 
     func clearSearchResults() {
+        cellPresentations.removeAll()
+        interactor?.reset()
+        view?.reloadCollectionView()
     }
 
     func searchImages(with text: String) {

@@ -67,7 +67,7 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
                 }
 
                 self.photoDTOs.append(contentsOf: photoDTOs)
-                self.output?.handleDtoTransformation(result: .success(self.photoDTOs))
+                self.output?.handleDtoTransformation(result: .success(photoDTOs))
                 self.page += 1
             case .failure:
                 self.output?.handleDtoTransformation(result: .failure(ImageServiceError.photosCouldNotBeRetrieved))

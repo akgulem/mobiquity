@@ -46,6 +46,10 @@ final class SearchViewController: UIViewController {
 
 extension SearchViewController: SearchViewInterface {
 
+    func prepareNavigationBar() {
+        title = "Search"
+    }
+
     func prepareSearchBar() {
         searchBar.placeholder = "Search images"
         searchBar.delegate = self
@@ -54,6 +58,7 @@ extension SearchViewController: SearchViewInterface {
 
     func prepareCollectionView() {
         collectionView.dataSource = self
+        collectionView.prefetchDataSource = self
         collectionView.delegate = self
         collectionView.register(cellType: FlickrImageCollectionViewCell.self, bundle: nil)
     }
@@ -67,6 +72,11 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchHelper.handleTyping(text: searchText)
+    }
+
+    func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
+        
+        return true
     }
 }
 
@@ -152,6 +162,21 @@ extension SearchViewController: UICollectionViewDataSource {
         let presentation = presenter.cellPresentation(for: indexPath)
         flickrImageCell.setupUI(presentation: presentation, indexPath: indexPath)
         return flickrImageCell
+    }
+}
+
+extension SearchViewController: UICollectionViewDataSourcePrefetching {
+
+    func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
+        guard let lastIndex = indexPaths.last?.item, lastIndex == presenter.numberOfItems(for: .zero) - 1 else {
+            return
+        }
+
+        guard let text = searchBar.text else {
+            presenter.searchImages(with: "")
+            return
+        }
+        presenter.searchImages(with: text)
     }
 }
 
