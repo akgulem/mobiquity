@@ -58,14 +58,25 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        .zero
+        return presenter.numberOfItems(for: section)
     }
 
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath
     ) -> UICollectionViewCell {
-        UICollectionViewCell()
+        guard indexPath.section == .zero else {
+            return UICollectionViewCell()
+        }
+
+        guard let flickrImageCell = collectionView.dequeueReusableCell(
+            with: FlickrImageCollectionViewCell.self,
+            for: indexPath
+        ) else {
+            return UICollectionViewCell()
+        }
+        flickrImageCell.setupUI(image: nil)
+        return flickrImageCell
     }
 }
 

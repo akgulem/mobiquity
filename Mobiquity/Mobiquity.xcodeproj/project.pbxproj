@@ -29,6 +29,7 @@
 		7672B70F27863EB4003C8740 /* SearchHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B70E27863EB4003C8740 /* SearchHelper.swift */; };
 		7672B71527870D2B003C8740 /* FlickrImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B71327870D2B003C8740 /* FlickrImageCollectionViewCell.swift */; };
 		7672B71627870D2B003C8740 /* FlickrImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */; };
+		7672B7182787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +75,7 @@
 		7672B70E27863EB4003C8740 /* SearchHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchHelper.swift; sourceTree = "<group>"; };
 		7672B71327870D2B003C8740 /* FlickrImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrImageCollectionViewCell.xib; sourceTree = "<group>"; };
+		7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerImageCollectionViewCellPresentation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -265,6 +267,7 @@
 			children = (
 				7672B71327870D2B003C8740 /* FlickrImageCollectionViewCell.swift */,
 				7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */,
+				7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */,
 			);
 			path = "Flickr Image Cell";
 			sourceTree = "<group>";
@@ -435,6 +438,7 @@
 				7672B70F27863EB4003C8740 /* SearchHelper.swift in Sources */,
 				7672B6FF278638AE003C8740 /* BaseViewInterface.swift in Sources */,
 				7672B6F827863860003C8740 /* SearchViewPresenter.swift in Sources */,
+				7672B7182787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift in Sources */,
 				7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */,
 				7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */,
 				7672B7072786397C003C8740 /* UIViewController+Extension.swift in Sources */,

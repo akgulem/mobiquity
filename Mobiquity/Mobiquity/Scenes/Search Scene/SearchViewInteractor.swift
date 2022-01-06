@@ -38,7 +38,6 @@ final class SearchViewInteractor {
     weak var output: SearchViewInteractorOutput?
     private var searchImagesService: SearchImagesServiceProtocol
     var page: Int = 1
-    var photosContainerDTO: PhotosContainerDTO?
     var photoDTOs = [PhotoDTO]()
 
     init(searchImagesService: SearchImagesServiceProtocol) {
@@ -67,7 +66,6 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
                     return
                 }
 
-                self.photosContainerDTO = dto
                 self.photoDTOs.append(contentsOf: photoDTOs)
                 self.output?.handleDtoTransformation(result: .success(self.photoDTOs))
                 self.page += 1
@@ -79,7 +77,6 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
 
     func reset() {
         self.page = 1
-        self.photosContainerDTO = nil
         self.photoDTOs.removeAll()
     }
 }

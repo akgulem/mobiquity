@@ -11,12 +11,20 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var flickrImageView: UIImageView!
 
+    var presentation: FlickrImageCollectionViewCellPresentation? {
+        didSet {
+            updateUI()
+        }
+    }
+
     override func awakeFromNib() {
         super.awakeFromNib()
     }
 
-    func setupUI(image: UIImage?) {
-
-        flickrImageView.image = image
+    func updateUI() {
+        if let url = URL(string: presentation?.url) {
+        } else {
+            flickrImageView.image = nil
+        }
     }
 }

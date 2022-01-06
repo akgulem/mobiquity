@@ -8,16 +8,6 @@
 import Foundation
 import Network
 
-struct CellPresentation: Hashable {
-
-    let id: String
-    let url: String?
-
-    func hash(into hasher: inout Hasher) {
-        hasher.combine(id)
-    }
-}
-
 protocol SearchViewPresenterInterface: BaseViewPresenterInterface, CollectionViewPresenterInterface {
 
     func clearSearchResults()
@@ -31,7 +21,7 @@ final class SearchViewPresenter {
     private let router: SearchViewRouterInterface?
     private let interactor: SearchViewInteractorInterface?
 
-    var cellPresentations = [CellPresentation]()
+    var cellPresentations = [FlickrImageCollectionViewCellPresentation]()
 
     init(
         view: SearchViewInterface?,
@@ -61,7 +51,10 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
     }
 
     func numberOfItems(for section: Int) -> Int {
-        .zero
+        guard section == .zero else {
+            return .zero
+        }
+        return cellPresentations.count
     }
 }
 
@@ -70,7 +63,7 @@ extension SearchViewPresenter: SearchViewInteractorOutput {
     func handleDtoTransformation(result: Result<[PhotoDTO], ImageServiceError>) {
         switch result {
         case .success(let data):
-            let cellPresentations = data.map { CellPresentation(id: $0.id ?? "", url: $0.getURL())}
+            let cellPresentations = data.map { FlickrImageCollectionViewCellPresentation(id: $0.id ?? "", url: $0.getURL())}
             self.cellPresentations.append(contentsOf: cellPresentations)
         case .failure(let error):
             switch error {
