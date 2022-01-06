@@ -16,6 +16,6 @@ public struct ImageSearchParameters {
     public init(text: String, page: Int?, perPage: Int?) {
         self.text = text
         self.page = page
-        self.perPage
+        self.perPage = perPage
     }
 }
