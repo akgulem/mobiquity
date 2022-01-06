@@ -20,12 +20,12 @@ public struct PhotoDTO: Decodable {
     public let isfamily: Int?
 }
 
-extension PhotoDTO {
+public extension PhotoDTO {
 
-    public var url: String {
+    func getURL() -> String {
         guard let farm = farm, let server = server, let id = id, let secret = secret else {
             return ""
         }
-        return "http://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret)}"
+        return "http://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret).jpg"
     }
 }
