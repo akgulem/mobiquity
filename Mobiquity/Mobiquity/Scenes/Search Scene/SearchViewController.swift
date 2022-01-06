@@ -70,6 +70,15 @@ extension SearchViewController: UISearchBarDelegate {
     }
 }
 
+// MARK: UIScrollViewDelegate methods
+
+extension SearchViewController: UIScrollViewDelegate {
+
+    func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        searchBar.endEditing(false)
+    }
+}
+
 // MARK: UICollectionViewDelegateFlowLayout Methods
 
 extension SearchViewController: UICollectionViewDelegateFlowLayout {
