@@ -15,7 +15,7 @@ final class SearchHelper {
 
     private var workItem: DispatchWorkItem?
 
-    init(interval: TimeInterval = 0.4, handler: @escaping SearchHandler) {
+    init(interval: TimeInterval = 1.0, handler: @escaping SearchHandler) {
         self.interval = interval
         self.searchHandler = handler
     }

@@ -22,7 +22,10 @@ final class SearchViewRouter {
     static func createModule(using navigationController: UINavigationController? = nil) -> SearchViewController {
         let view = SearchViewController.initFromNib()
         let router = SearchViewRouter(with: navigationController)
-        let interactor = SearchViewInteractor(searchImagesService: SearchImagesAPIService())
+        let interactor = SearchViewInteractor(
+            searchImagesService: SearchImagesAPIService(),
+            searchManageable: SearchManager.shared
+        )
 
         let presenter = SearchViewPresenter(view: view, router: router, interactor: interactor)
         view.presenter = presenter

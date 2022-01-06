@@ -8,8 +8,11 @@
 import Foundation
 import Network
 
-protocol SearchViewPresenterInterface: BaseViewPresenterInterface, CollectionViewPresenterInterface {
+protocol SearchViewPresenterInterface: BaseViewPresenterInterface,
+                                       TableViewPresenterInterface, CollectionViewPresenterInterface {
 
+    func historyItemPresentation(for index: Int) -> String
+    func saveHistoryItem(item: String)
     func clearSearchResults()
     func searchImages(with text: String)
     func cellPresentation(for indexPath: IndexPath) -> FlickrImageCollectionViewCellPresentation?
@@ -37,6 +40,21 @@ final class SearchViewPresenter {
 
 extension SearchViewPresenter: SearchViewPresenterInterface {
 
+    func saveHistoryItem(item: String) {
+        interactor?.saveSearchHistoryItem(item: item)
+    }
+
+    func historyItemPresentation(for index: Int) -> String {
+        return interactor?.getSearchHistoryItem(at: index) ?? ""
+    }
+
+    func numberOfItemsForTableView(for section: Int) -> Int {
+        guard section == .zero else {
+            return .zero
+        }
+        return interactor?.numberOfHistoryItems() ?? .zero
+    }
+
     func cellPresentation(for indexPath: IndexPath) -> FlickrImageCollectionViewCellPresentation? {
         guard indexPath.section == .zero else {
             return nil
@@ -56,6 +74,7 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
 
     func viewDidLoad() {
         view?.prepareSearchBar()
+        view?.prepareTableView()
         view?.prepareCollectionView()
         view?.preparePageTitle()
         view?.prepareNavigationBar()
@@ -85,9 +104,13 @@ extension SearchViewPresenter: SearchViewInteractorOutput {
         case .failure(let error):
             switch error {
             case .photosCouldNotBeRetrieved:
-                break
+                view?.showError(
+                    title: "Error",
+                    message: "Photos could not be retrieved. Try again later",
+                    preferredStyle: .alert
+                )
             case .photosReachedEnd:
-                break
+                view?.showError(title: "Error", message: "There are no more photos", preferredStyle: .alert)
             }
         }
     }

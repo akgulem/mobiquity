@@ -16,6 +16,10 @@ enum ImageServiceError: Error {
 
 protocol SearchViewInteractorInterface {
 
+    func numberOfHistoryItems() -> Int
+    func getSearchHistoryItem(at index: Int) -> String
+    func saveSearchHistoryItem(item: String)
+
     func search(with text: String)
     func reset()
 }
@@ -37,15 +41,29 @@ final class SearchViewInteractor {
 
     weak var output: SearchViewInteractorOutput?
     private var searchImagesService: SearchImagesServiceProtocol
+    private var searchManageable: SearchManageable
     var page: Int = 1
     var photoDTOs = [PhotoDTO]()
 
-    init(searchImagesService: SearchImagesServiceProtocol) {
+    init(searchImagesService: SearchImagesServiceProtocol, searchManageable: SearchManager) {
         self.searchImagesService = searchImagesService
+        self.searchManageable = searchManageable
     }
 }
 
 extension SearchViewInteractor: SearchViewInteractorInterface {
+
+    func numberOfHistoryItems() -> Int {
+        return searchManageable.numberOfSearchHistories
+    }
+
+    func getSearchHistoryItem(at index: Int) -> String {
+        return searchManageable.getSearchHistoryItem(at: index)
+    }
+
+    func saveSearchHistoryItem(item: String) {
+        searchManageable.saveSearchHistoryItem(item: item)
+    }
 
     func search(with text: String) {
         searchImagesService.getImages(

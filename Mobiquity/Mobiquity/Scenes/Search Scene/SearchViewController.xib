@@ -12,6 +12,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="SearchViewController" customModule="Mobiquity" customModuleProvider="target">
             <connections>
                 <outlet property="collectionView" destination="Mwo-jU-p7C" id="Ctv-FO-MZ1"/>
+                <outlet property="historyTableView" destination="Zja-5m-R0a" id="a3K-59-ely"/>
                 <outlet property="searchBar" destination="1kf-Xu-hY5" id="cho-cB-jWq"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>
@@ -35,19 +36,27 @@
                         <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                     </collectionViewFlowLayout>
                 </collectionView>
+                <tableView hidden="YES" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="Zja-5m-R0a">
+                    <rect key="frame" x="0.0" y="95" width="414" height="767"/>
+                    <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                </tableView>
             </subviews>
             <viewLayoutGuide key="safeArea" id="fnl-2z-Ty3"/>
             <color key="backgroundColor" systemColor="systemBackgroundColor"/>
             <constraints>
                 <constraint firstItem="Mwo-jU-p7C" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="1hg-Y9-SLi"/>
+                <constraint firstItem="Zja-5m-R0a" firstAttribute="top" secondItem="1kf-Xu-hY5" secondAttribute="bottom" id="5xm-rf-0Ma"/>
                 <constraint firstItem="1kf-Xu-hY5" firstAttribute="trailing" secondItem="fnl-2z-Ty3" secondAttribute="trailing" id="6IT-CG-vU6"/>
                 <constraint firstItem="Mwo-jU-p7C" firstAttribute="top" secondItem="1kf-Xu-hY5" secondAttribute="bottom" id="Bgu-g8-iO3"/>
                 <constraint firstItem="1kf-Xu-hY5" firstAttribute="top" secondItem="fnl-2z-Ty3" secondAttribute="top" id="LD2-z6-rxt"/>
+                <constraint firstItem="Zja-5m-R0a" firstAttribute="bottom" secondItem="fnl-2z-Ty3" secondAttribute="bottom" id="Nc7-fz-pQN"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Mwo-jU-p7C" secondAttribute="trailing" id="fH8-cO-zm0"/>
                 <constraint firstItem="fnl-2z-Ty3" firstAttribute="bottom" secondItem="Mwo-jU-p7C" secondAttribute="bottom" id="lsO-J9-alQ"/>
+                <constraint firstItem="Zja-5m-R0a" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="qdv-MQ-sqn"/>
                 <constraint firstItem="1kf-Xu-hY5" firstAttribute="leading" secondItem="fnl-2z-Ty3" secondAttribute="leading" id="vEH-3G-LYu"/>
+                <constraint firstItem="fnl-2z-Ty3" firstAttribute="trailing" secondItem="Zja-5m-R0a" secondAttribute="trailing" id="wzi-Rr-yiL"/>
             </constraints>
-            <point key="canvasLocation" x="132" y="130"/>
+            <point key="canvasLocation" x="131.8840579710145" y="129.91071428571428"/>
         </view>
     </objects>
     <resources>

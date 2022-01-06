@@ -7,7 +7,7 @@
 
 import UIKit
 
-protocol SearchViewInterface: BaseViewInterface, CollectionViewInterface {
+protocol SearchViewInterface: BaseViewInterface, TableViewInterface, CollectionViewInterface {
 
     func prepareSearchBar()
     func prepareCollectionView()
@@ -31,9 +31,21 @@ final class SearchViewController: UIViewController {
     // MARK: IBOutlets
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var collectionView: UICollectionView!
+    @IBOutlet private var historyTableView: UITableView!
     private var collectionViewParameters = CollectionViewFlowLayoutParameters()
 
+    // MARK: Helpers
     private var searchHelper: SearchHelper!
+
+    // MARK: Variables
+    private var shouldShowHistoryTableView = false {
+        didSet {
+            historyTableView.isHidden = !shouldShowHistoryTableView
+            if shouldShowHistoryTableView {
+                reloadTableView()
+            }
+        }
+    }
 
     // MARK: Presenter
     var presenter: SearchViewPresenterInterface!
@@ -41,10 +53,22 @@ final class SearchViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(notification:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(notification:)), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
 }
 
 extension SearchViewController: SearchViewInterface {
+
+    func reloadTableView() {
+        historyTableView.reloadData()
+    }
+
+    func prepareTableView() {
+        historyTableView.dataSource = self
+        historyTableView.delegate = self
+    }
 
     func prepareNavigationBar() {
         title = "Search"
@@ -68,6 +92,8 @@ extension SearchViewController: SearchViewInterface {
     }
 }
 
+// MARK: UISearchBarDelegate methods
+
 extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
@@ -75,8 +101,13 @@ extension SearchViewController: UISearchBarDelegate {
     }
 
     func searchBarShouldBeginEditing(_ searchBar: UISearchBar) -> Bool {
-        
+        shouldShowHistoryTableView = true
         return true
+    }
+
+    func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
+        shouldShowHistoryTableView = true
+        search(text: searchBar.text ?? "")
     }
 }
 
@@ -85,7 +116,13 @@ extension SearchViewController: UISearchBarDelegate {
 extension SearchViewController: UIScrollViewDelegate {
 
     func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        searchBar.endEditing(false)
+        if scrollView is UICollectionView {
+            searchBar.endEditing(false)
+            guard let text = searchBar.text else {
+                return
+            }
+            presenter.saveHistoryItem(item: text)
+        }
     }
 }
 
@@ -139,6 +176,8 @@ extension SearchViewController: UICollectionViewDelegateFlowLayout {
     }
 }
 
+// MARK: UICollectionViewDataSource Methods
+
 extension SearchViewController: UICollectionViewDataSource {
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -165,6 +204,8 @@ extension SearchViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: UICollectionViewPrefetching Methods
+
 extension SearchViewController: UICollectionViewDataSourcePrefetching {
 
     func collectionView(_ collectionView: UICollectionView, prefetchItemsAt indexPaths: [IndexPath]) {
@@ -180,6 +221,29 @@ extension SearchViewController: UICollectionViewDataSourcePrefetching {
     }
 }
 
+extension SearchViewController: UITableViewDataSource {
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return presenter.numberOfItemsForTableView(for: section)
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = UITableViewCell(style: .value1, reuseIdentifier: "Cell")
+        cell.textLabel?.text = presenter.historyItemPresentation(for: indexPath.row)
+        return cell
+    }
+}
+
+extension SearchViewController: UITableViewDelegate {
+
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        let text = presenter.historyItemPresentation(for: indexPath.item)
+        searchBar.text = text
+        search(text: searchBar.text ?? "")
+    }
+}
+
 // MARK: Helper Methods
 
 private extension SearchViewController {
@@ -187,8 +251,31 @@ private extension SearchViewController {
     func prepareSearchHelper() {
         searchHelper = SearchHelper { [weak self] text in
             guard let self = self else { return }
-            self.presenter.clearSearchResults()
-            self.presenter.searchImages(with: text)
+            self.search(text: text)
+        }
+    }
+
+    func search(text: String) {
+        guard !text.isEmpty else {
+            return
+        }
+        shouldShowHistoryTableView = false
+        presenter.clearSearchResults()
+        presenter.searchImages(with: text)
+        presenter.saveHistoryItem(item: text)
+    }
+
+    @objc private func keyboardWillShow(notification: NSNotification) {
+        if let keyboardSize =
+            (notification.userInfo?[UIResponder.keyboardFrameBeginUserInfoKey] as? NSValue)?.cgRectValue,
+           !historyTableView.isHidden {
+            historyTableView.contentInset = UIEdgeInsets(top: 0, left: 0, bottom: keyboardSize.height, right: 0)
+        }
+    }
+
+    @objc private func keyboardWillHide(notification: NSNotification) {
+        if !historyTableView.isHidden {
+            historyTableView.contentInset = .zero
         }
     }
 }

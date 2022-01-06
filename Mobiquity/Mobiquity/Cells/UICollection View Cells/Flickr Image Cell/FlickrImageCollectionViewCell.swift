@@ -13,7 +13,7 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
     @IBOutlet private var flickrImageView: UIImageView!
     var indexPath: IndexPath!
 
-    var presentation: FlickrImageCollectionViewCellPresentation? {
+    private var presentation: FlickrImageCollectionViewCellPresentation? {
         didSet {
             updateUI()
         }
@@ -43,7 +43,9 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
         }
     }
 
-    func getImageHeightForCell() -> CGFloat {
-        return self.flickrImageView.image?.size.height ?? .zero
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        flickrImageView.image = nil
+        flickrImageView.kf.cancelDownloadTask()
     }
 }

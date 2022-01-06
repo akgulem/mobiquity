@@ -31,6 +31,9 @@
 		7672B71627870D2B003C8740 /* FlickrImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */; };
 		7672B7182787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */; };
 		76754927278749E400A37870 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76754926278749E400A37870 /* Kingfisher */; };
+		7675492C2787A1B500A37870 /* TableViewPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675492B2787A1B500A37870 /* TableViewPresenterInterface.swift */; };
+		7675492E2787A1D200A37870 /* TableViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675492D2787A1D200A37870 /* TableViewInterface.swift */; };
+		767549332787A5D000A37870 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767549322787A5D000A37870 /* SearchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +80,9 @@
 		7672B71327870D2B003C8740 /* FlickrImageCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickrImageCollectionViewCell.swift; sourceTree = "<group>"; };
 		7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FlickrImageCollectionViewCell.xib; sourceTree = "<group>"; };
 		7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlickerImageCollectionViewCellPresentation.swift; sourceTree = "<group>"; };
+		7675492B2787A1B500A37870 /* TableViewPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenterInterface.swift; sourceTree = "<group>"; };
+		7675492D2787A1D200A37870 /* TableViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewInterface.swift; sourceTree = "<group>"; };
+		767549322787A5D000A37870 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -135,6 +141,7 @@
 				7672B6E5278623A3003C8740 /* Extensions */,
 				7672B6E6278623B0003C8740 /* Common */,
 				7672B6E7278623B7003C8740 /* Cells */,
+				767549312787A5B900A37870 /* Managers */,
 				7672B6BC2786210C003C8740 /* Assets.xcassets */,
 				7672B6BE2786210C003C8740 /* LaunchScreen.storyboard */,
 				7672B6C12786210C003C8740 /* Info.plist */,
@@ -227,6 +234,7 @@
 			children = (
 				7672B6FE278638AE003C8740 /* BaseViewInterface.swift */,
 				7672B701278638CD003C8740 /* CollectionViewInterface.swift */,
+				7675492D2787A1D200A37870 /* TableViewInterface.swift */,
 			);
 			path = "View Protocols";
 			sourceTree = "<group>";
@@ -236,6 +244,7 @@
 			children = (
 				7672B70327863910003C8740 /* BaseViewPresenterInterface.swift */,
 				7672B70827863A3B003C8740 /* CollectionViewPresenterInterface.swift */,
+				7675492B2787A1B500A37870 /* TableViewPresenterInterface.swift */,
 			);
 			path = "Presenter Protocols";
 			sourceTree = "<group>";
@@ -272,6 +281,14 @@
 				7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */,
 			);
 			path = "Flickr Image Cell";
+			sourceTree = "<group>";
+		};
+		767549312787A5B900A37870 /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				767549322787A5D000A37870 /* SearchManager.swift */,
+			);
+			path = Managers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -441,12 +458,15 @@
 				7672B70427863910003C8740 /* BaseViewPresenterInterface.swift in Sources */,
 				7672B70C27863AFA003C8740 /* BaseInteractorOutput.swift in Sources */,
 				7672B6FA27863869003C8740 /* SearchViewInteractor.swift in Sources */,
+				7675492E2787A1D200A37870 /* TableViewInterface.swift in Sources */,
 				7672B70F27863EB4003C8740 /* SearchHelper.swift in Sources */,
+				7675492C2787A1B500A37870 /* TableViewPresenterInterface.swift in Sources */,
 				7672B6FF278638AE003C8740 /* BaseViewInterface.swift in Sources */,
 				7672B6F827863860003C8740 /* SearchViewPresenter.swift in Sources */,
 				7672B7182787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift in Sources */,
 				7672B70927863A3B003C8740 /* CollectionViewPresenterInterface.swift in Sources */,
 				7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */,
+				767549332787A5D000A37870 /* SearchManager.swift in Sources */,
 				7672B7072786397C003C8740 /* UIViewController+Extension.swift in Sources */,
 				7672B6B427862109003C8740 /* AppDelegate.swift in Sources */,
 			);
