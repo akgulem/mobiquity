@@ -26,13 +26,14 @@ final class SearchViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        presenter.viewDidLoad()
     }
 }
 
 extension SearchViewController: SearchViewInterface {
 
     func prepareSearchBar() {
+        searchBar.placeholder = "Search images"
         searchBar.delegate = self
         prepareSearchHelper()
     }
