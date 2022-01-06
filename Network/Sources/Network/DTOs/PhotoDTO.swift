@@ -19,3 +19,13 @@ public struct PhotoDTO: Decodable {
     public let isfriend: Int?
     public let isfamily: Int?
 }
+
+extension PhotoDTO {
+
+    public var url: String {
+        guard let farm = farm, let server = server, let id = id, let secret = secret else {
+            return ""
+        }
+        return "http://farm\(farm).static.flickr.com/\(server)/\(id)_\(secret)}"
+    }
+}

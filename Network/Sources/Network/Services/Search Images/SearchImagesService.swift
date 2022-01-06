@@ -9,7 +9,7 @@ import Foundation
 
 public protocol SearchImagesServiceProtocol {
 
-    func getImages(text: String, page: Int?, perPage: Int?, completion: @escaping (Result<[PhotosContainerDTO], Error>) -> Void)
+    func getImages(text: String, page: Int?, perPage: Int?, completion: @escaping (Result<PhotosContainerDTO, Error>) -> Void)
 }
 
 public class SearchImagesAPIService: SearchImagesServiceProtocol {
@@ -20,11 +20,11 @@ public class SearchImagesAPIService: SearchImagesServiceProtocol {
         self.networkManageable = networkManageable
     }
 
-    public func getImages(text: String, page: Int?, perPage: Int?, completion: @escaping (Result<[PhotosContainerDTO], Error>) -> Void) {
+    public func getImages(text: String, page: Int?, perPage: Int?, completion: @escaping (Result<PhotosContainerDTO, Error>) -> Void) {
 
         let searchParameters = ImageSearchParameters(text: text, page: page, perPage: perPage)
         let searchImageServiceRequest = FlickrRequestCollection.getImages(parameters: searchParameters)
-        networkManageable.execute(request: searchImageServiceRequest) { (result: Result<[PhotosContainerDTO], Error>) in
+        networkManageable.execute(request: searchImageServiceRequest) { (result: Result<PhotosContainerDTO, Error>) in
             completion(result)
         }
     }

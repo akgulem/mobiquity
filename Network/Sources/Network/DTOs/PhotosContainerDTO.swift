@@ -9,6 +9,6 @@ import Foundation
 
 public struct PhotosContainerDTO: Decodable {
     
-    let photos: Photos?
-    let stat: String?
+    public let photos: Photos?
+    public let stat: String?
 }

@@ -6,6 +6,17 @@
 //
 
 import Foundation
+import Network
+
+struct CellPresentation: Hashable {
+
+    let id: String
+    let url: String?
+
+    func hash(into hasher: inout Hasher) {
+        hasher.combine(id)
+    }
+}
 
 protocol SearchViewPresenterInterface: BaseViewPresenterInterface, CollectionViewPresenterInterface {
 
@@ -19,6 +30,8 @@ final class SearchViewPresenter {
     private weak var view: SearchViewInterface?
     private let router: SearchViewRouterInterface?
     private let interactor: SearchViewInteractorInterface?
+
+    var cellPresentations = [CellPresentation]()
 
     init(
         view: SearchViewInterface?,
@@ -49,4 +62,19 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
 }
 
 extension SearchViewPresenter: SearchViewInteractorOutput {
+
+    func handleDtoTransformation(result: Result<[PhotoDTO], ImageServiceError>) {
+        switch result {
+        case .success(let data):
+            let cellPresentations = data.map { CellPresentation(id: $0.id ?? "", url: $0.url)}
+            self.cellPresentations.append(contentsOf: cellPresentations)
+        case .failure(let error):
+            switch error {
+            case .photosCouldNotBeRetrieved:
+                break
+            case .photosReachedEnd:
+                break
+            }
+        }
+    }
 }
