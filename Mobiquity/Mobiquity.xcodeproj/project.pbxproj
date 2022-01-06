@@ -30,6 +30,7 @@
 		7672B71527870D2B003C8740 /* FlickrImageCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B71327870D2B003C8740 /* FlickrImageCollectionViewCell.swift */; };
 		7672B71627870D2B003C8740 /* FlickrImageCollectionViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7672B71427870D2B003C8740 /* FlickrImageCollectionViewCell.xib */; };
 		7672B7182787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B7172787114A003C8740 /* FlickerImageCollectionViewCellPresentation.swift */; };
+		76754927278749E400A37870 /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 76754926278749E400A37870 /* Kingfisher */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +84,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				76754927278749E400A37870 /* Kingfisher in Frameworks */,
 				7672B6ED27862764003C8740 /* Network in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -291,6 +293,7 @@
 			name = Mobiquity;
 			packageProductDependencies = (
 				7672B6EC27862764003C8740 /* Network */,
+				76754926278749E400A37870 /* Kingfisher */,
 			);
 			productName = Mobiquity;
 			productReference = 7672B6B027862109003C8740 /* Mobiquity.app */;
@@ -364,6 +367,9 @@
 				Base,
 			);
 			mainGroup = 7672B6A727862109003C8740;
+			packageReferences = (
+				76754925278749E400A37870 /* XCRemoteSwiftPackageReference "Kingfisher" */,
+			);
 			productRefGroup = 7672B6B127862109003C8740 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -793,10 +799,26 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCRemoteSwiftPackageReference section */
+		76754925278749E400A37870 /* XCRemoteSwiftPackageReference "Kingfisher" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/onevcat/Kingfisher";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 7.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
 /* Begin XCSwiftPackageProductDependency section */
 		7672B6EC27862764003C8740 /* Network */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Network;
+		};
+		76754926278749E400A37870 /* Kingfisher */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 76754925278749E400A37870 /* XCRemoteSwiftPackageReference "Kingfisher" */;
+			productName = Kingfisher;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
