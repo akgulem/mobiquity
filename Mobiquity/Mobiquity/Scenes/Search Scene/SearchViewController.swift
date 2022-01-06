@@ -13,11 +13,25 @@ protocol SearchViewInterface: BaseViewInterface, CollectionViewInterface {
     func prepareCollectionView()
 }
 
+struct CollectionViewFlowLayoutParameters {
+
+    var topInset: CGFloat = .zero
+    var leftInset: CGFloat = 10.0
+    var rightInset: CGFloat = 10.0
+    var bottomInset: CGFloat = .zero
+
+    var minimumInterItemSpace: CGFloat = 5.0
+    var minimumLineSpace: CGFloat = .zero
+    var cellHeight: CGFloat = 300.0
+    var numberOfItemsPerRow: CGFloat = 2
+}
+
 final class SearchViewController: UIViewController {
 
     // MARK: IBOutlets
     @IBOutlet private var searchBar: UISearchBar!
     @IBOutlet private var collectionView: UICollectionView!
+    private var collectionViewParameters = CollectionViewFlowLayoutParameters()
 
     private var searchHelper: SearchHelper!
 
@@ -41,6 +55,7 @@ extension SearchViewController: SearchViewInterface {
     func prepareCollectionView() {
         collectionView.dataSource = self
         collectionView.delegate = self
+        collectionView.register(cellType: FlickrImageCollectionViewCell.self, bundle: nil)
     }
 
     func reloadCollectionView() {
@@ -52,6 +67,56 @@ extension SearchViewController: UISearchBarDelegate {
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         searchHelper.handleTyping(text: searchText)
+    }
+}
+
+// MARK: UICollectionViewDelegateFlowLayout Methods
+
+extension SearchViewController: UICollectionViewDelegateFlowLayout {
+
+    private var collectionViewWidth: CGFloat {
+        let margins = collectionViewParameters.leftInset +
+                    collectionViewParameters.rightInset +
+                    collectionViewParameters.minimumInterItemSpace
+        return (collectionView.frame.size.width - margins) / collectionViewParameters.numberOfItemsPerRow
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        sizeForItemAt indexPath: IndexPath
+    ) -> CGSize {
+        return CGSize(width: collectionViewWidth, height: collectionViewParameters.cellHeight)
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        insetForSectionAt section: Int
+    ) -> UIEdgeInsets {
+        let insets = UIEdgeInsets(
+            top: .zero,
+            left: collectionViewParameters.leftInset,
+            bottom: .zero,
+            right: collectionViewParameters.rightInset
+        )
+        return insets
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumInteritemSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return .zero
+    }
+
+    func collectionView(
+        _ collectionView: UICollectionView,
+        layout collectionViewLayout: UICollectionViewLayout,
+        minimumLineSpacingForSectionAt section: Int
+    ) -> CGFloat {
+        return .zero
     }
 }
 
@@ -75,13 +140,10 @@ extension SearchViewController: UICollectionViewDataSource {
         ) else {
             return UICollectionViewCell()
         }
-        flickrImageCell.setupUI(image: nil)
+        let presentation = presenter.cellPresentation(for: indexPath)
+        flickrImageCell.setupUI(presentation: presentation, indexPath: indexPath)
         return flickrImageCell
     }
-}
-
-extension SearchViewController: UICollectionViewDelegate {
-
 }
 
 // MARK: Helper Methods

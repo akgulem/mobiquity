@@ -12,6 +12,7 @@ protocol SearchViewPresenterInterface: BaseViewPresenterInterface, CollectionVie
 
     func clearSearchResults()
     func searchImages(with text: String)
+    func cellPresentation(for indexPath: IndexPath) -> FlickrImageCollectionViewCellPresentation?
 }
 
 final class SearchViewPresenter {
@@ -35,6 +36,13 @@ final class SearchViewPresenter {
 }
 
 extension SearchViewPresenter: SearchViewPresenterInterface {
+
+    func cellPresentation(for indexPath: IndexPath) -> FlickrImageCollectionViewCellPresentation? {
+        guard indexPath.section == .zero else {
+            return nil
+        }
+        return cellPresentations[indexPath.row]
+    }
 
     func clearSearchResults() {
     }
@@ -63,8 +71,14 @@ extension SearchViewPresenter: SearchViewInteractorOutput {
     func handleDtoTransformation(result: Result<[PhotoDTO], ImageServiceError>) {
         switch result {
         case .success(let data):
-            let cellPresentations = data.map { FlickrImageCollectionViewCellPresentation(id: $0.id ?? "", url: $0.getURL())}
+            let cellPresentations = data.map {
+                FlickrImageCollectionViewCellPresentation(
+                    id: $0.id ?? "",
+                    url: $0.getURL()
+                )
+            }
             self.cellPresentations.append(contentsOf: cellPresentations)
+            view?.reloadCollectionView()
         case .failure(let error):
             switch error {
             case .photosCouldNotBeRetrieved:

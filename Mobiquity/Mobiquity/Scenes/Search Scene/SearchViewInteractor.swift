@@ -56,13 +56,13 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
             guard let self = self else { return }
             switch result {
             case .success(let dto):
-                guard let photos = dto.photos, let photoDTOs = photos.photo, let pageCount = photos.pages else {
-                    self.output?.handleDtoTransformation(result: .failure(ImageServiceError.photosCouldNotBeRetrieved))
+                guard let photoDTOs = dto.photos?.photo, let pageCount = dto.photos?.pages else {
+                    self.output?.handleDtoTransformation(result: .failure(.photosCouldNotBeRetrieved))
                     return
                 }
 
                 guard self.page <= pageCount else {
-                    self.output?.handleDtoTransformation(result: .failure(ImageServiceError.photosReachedEnd))
+                    self.output?.handleDtoTransformation(result: .failure(.photosReachedEnd))
                     return
                 }
 
