@@ -22,7 +22,7 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
     }
 
     func updateUI() {
-        if let url = URL(string: presentation?.url) {
+        if let url = URL(string: presentation?.url ?? "") {
         } else {
             flickrImageView.image = nil
         }
