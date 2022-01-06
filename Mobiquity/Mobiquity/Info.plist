@@ -5,7 +5,7 @@
 	<key>FLICKR_URL_SCHEME</key>
 	<string>https</string>
 	<key>FLICKR_BASE_URL</key>
-	<string>www.flickr.com/services/rest/</string>
+	<string>www.flickr.com</string>
 	<key>FLICKR_API_KEY</key>
 	<string>1533550949344b03a5e07219186c3b7f</string>
 	<key>FLICKR_RESPONSE_FORMAT</key>
