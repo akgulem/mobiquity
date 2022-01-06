@@ -6,10 +6,12 @@
 //
 
 import UIKit
+import Kingfisher
 
 final class FlickrImageCollectionViewCell: UICollectionViewCell {
 
     @IBOutlet private var flickrImageView: UIImageView!
+    var indexPath: IndexPath!
 
     var presentation: FlickrImageCollectionViewCellPresentation? {
         didSet {
@@ -21,10 +23,27 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
         super.awakeFromNib()
     }
 
-    func updateUI() {
+    func setupUI(
+        presentation: FlickrImageCollectionViewCellPresentation?,
+        indexPath: IndexPath
+    ) {
+        self.presentation = presentation
+        self.indexPath = indexPath
+    }
+
+    public override var intrinsicContentSize: CGSize {
+        return flickrImageView.image?.size ?? .zero
+    }
+
+    private func updateUI() {
         if let url = URL(string: presentation?.url ?? "") {
+            flickrImageView.kf.setImage(with: url)
         } else {
             flickrImageView.image = nil
         }
+    }
+
+    func getImageHeightForCell() -> CGFloat {
+        return self.flickrImageView.image?.size.height ?? .zero
     }
 }
