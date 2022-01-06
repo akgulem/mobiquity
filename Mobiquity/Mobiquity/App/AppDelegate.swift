@@ -19,8 +19,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     ) -> Bool {
         // Override point for customization after application launch.
         window = UIWindow()
-        let viewController = UIViewController()
-        window?.rootViewController = viewController
+        let searchViewController = SearchViewRouter.createModule(using: navigationController)
+        window?.rootViewController = searchViewController
         window?.makeKeyAndVisible()
         return true
     }
