@@ -10,8 +10,6 @@
 	<string>1533550949344b03a5e07219186c3b7f</string>
 	<key>FLICKR_RESPONSE_FORMAT</key>
 	<string>json</string>
-	<key>CFBundleIdentifier</key>
-	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
