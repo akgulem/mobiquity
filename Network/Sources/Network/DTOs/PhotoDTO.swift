@@ -18,6 +18,18 @@ public struct PhotoDTO: Decodable {
     public let ispublic: Int?
     public let isfriend: Int?
     public let isfamily: Int?
+
+    public init(id: String?, owner: String?, secret: String?, server: String?, farm: Int?, title: String?, ispublic: Int?, isfriend: Int?, isfamily: Int?) {
+        self.id = id
+        self.owner = owner
+        self.secret = secret
+        self.server = server
+        self.farm = farm
+        self.title = title
+        self.ispublic = ispublic
+        self.isfriend = isfriend
+        self.isfamily = isfamily
+    }
 }
 
 public extension PhotoDTO {

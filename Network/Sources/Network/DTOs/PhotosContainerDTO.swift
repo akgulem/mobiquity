@@ -11,4 +11,9 @@ public struct PhotosContainerDTO: Decodable {
     
     public let photos: Photos?
     public let stat: String?
+
+    public init(photos: Photos?, stat: String?) {
+        self.photos = photos
+        self.stat = stat
+    }
 }

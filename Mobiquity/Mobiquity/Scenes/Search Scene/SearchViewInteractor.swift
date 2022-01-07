@@ -45,7 +45,7 @@ final class SearchViewInteractor {
     var page: Int = 1
     var photoDTOs = [PhotoDTO]()
 
-    init(searchImagesService: SearchImagesServiceProtocol, searchManageable: SearchManager) {
+    init(searchImagesService: SearchImagesServiceProtocol, searchManageable: SearchManageable) {
         self.searchImagesService = searchImagesService
         self.searchManageable = searchManageable
     }

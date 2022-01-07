@@ -34,6 +34,12 @@
 		7675492C2787A1B500A37870 /* TableViewPresenterInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675492B2787A1B500A37870 /* TableViewPresenterInterface.swift */; };
 		7675492E2787A1D200A37870 /* TableViewInterface.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675492D2787A1D200A37870 /* TableViewInterface.swift */; };
 		767549332787A5D000A37870 /* SearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 767549322787A5D000A37870 /* SearchManager.swift */; };
+		7675493927883C8500A37870 /* MockSearchViewInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493527883C8400A37870 /* MockSearchViewInteractor.swift */; };
+		7675493A27883C8500A37870 /* SearchViewPresenterTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493627883C8400A37870 /* SearchViewPresenterTests.swift */; };
+		7675493B27883C8500A37870 /* MockSearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493727883C8400A37870 /* MockSearchView.swift */; };
+		7675493C27883C8500A37870 /* MockSearchViewRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493827883C8500A37870 /* MockSearchViewRouter.swift */; };
+		7675493E278865ED00A37870 /* MockSearchImageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493D278865ED00A37870 /* MockSearchImageService.swift */; };
+		76754940278865F900A37870 /* MockSearchManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7675493F278865F900A37870 /* MockSearchManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +89,12 @@
 		7675492B2787A1B500A37870 /* TableViewPresenterInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewPresenterInterface.swift; sourceTree = "<group>"; };
 		7675492D2787A1D200A37870 /* TableViewInterface.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewInterface.swift; sourceTree = "<group>"; };
 		767549322787A5D000A37870 /* SearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchManager.swift; sourceTree = "<group>"; };
+		7675493527883C8400A37870 /* MockSearchViewInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSearchViewInteractor.swift; sourceTree = "<group>"; };
+		7675493627883C8400A37870 /* SearchViewPresenterTests.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchViewPresenterTests.swift; sourceTree = "<group>"; };
+		7675493727883C8400A37870 /* MockSearchView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSearchView.swift; sourceTree = "<group>"; };
+		7675493827883C8500A37870 /* MockSearchViewRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MockSearchViewRouter.swift; sourceTree = "<group>"; };
+		7675493D278865ED00A37870 /* MockSearchImageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchImageService.swift; sourceTree = "<group>"; };
+		7675493F278865F900A37870 /* MockSearchManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MockSearchManager.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -152,6 +164,7 @@
 		7672B6C92786210D003C8740 /* MobiquityTests */ = {
 			isa = PBXGroup;
 			children = (
+				7675493427883C5100A37870 /* Search Scene */,
 				7672B6CA2786210D003C8740 /* MobiquityTests.swift */,
 			);
 			path = MobiquityTests;
@@ -289,6 +302,19 @@
 				767549322787A5D000A37870 /* SearchManager.swift */,
 			);
 			path = Managers;
+			sourceTree = "<group>";
+		};
+		7675493427883C5100A37870 /* Search Scene */ = {
+			isa = PBXGroup;
+			children = (
+				7675493627883C8400A37870 /* SearchViewPresenterTests.swift */,
+				7675493727883C8400A37870 /* MockSearchView.swift */,
+				7675493527883C8400A37870 /* MockSearchViewInteractor.swift */,
+				7675493827883C8500A37870 /* MockSearchViewRouter.swift */,
+				7675493D278865ED00A37870 /* MockSearchImageService.swift */,
+				7675493F278865F900A37870 /* MockSearchManager.swift */,
+			);
+			path = "Search Scene";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -476,7 +502,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7675493A27883C8500A37870 /* SearchViewPresenterTests.swift in Sources */,
+				7675493C27883C8500A37870 /* MockSearchViewRouter.swift in Sources */,
+				7675493927883C8500A37870 /* MockSearchViewInteractor.swift in Sources */,
+				7675493E278865ED00A37870 /* MockSearchImageService.swift in Sources */,
+				76754940278865F900A37870 /* MockSearchManager.swift in Sources */,
 				7672B6CB2786210D003C8740 /* MobiquityTests.swift in Sources */,
+				7675493B27883C8500A37870 /* MockSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
