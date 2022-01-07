@@ -16,6 +16,7 @@ enum ImageServiceError: Error {
 
 protocol SearchViewInteractorInterface {
 
+    var output: SearchViewInteractorOutput? { get }
     func numberOfHistoryItems() -> Int
     func getSearchHistoryItem(at index: Int) -> String
     func saveSearchHistoryItem(item: String)

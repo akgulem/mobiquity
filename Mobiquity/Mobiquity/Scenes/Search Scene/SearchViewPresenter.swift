@@ -25,7 +25,8 @@ final class SearchViewPresenter {
     private let router: SearchViewRouterInterface?
     private let interactor: SearchViewInteractorInterface?
 
-    var cellPresentations = [FlickrImageCollectionViewCellPresentation]()
+    // MARK: Presentations
+    private var cellPresentations = [FlickrImageCollectionViewCellPresentation]()
 
     init(
         view: SearchViewInterface?,
@@ -45,14 +46,20 @@ extension SearchViewPresenter: SearchViewPresenterInterface {
     }
 
     func historyItemPresentation(for index: Int) -> String {
-        return interactor?.getSearchHistoryItem(at: index) ?? ""
+        guard let result = interactor?.getSearchHistoryItem(at: index) else {
+            return ""
+        }
+        return result
     }
 
     func numberOfItemsForTableView(for section: Int) -> Int {
         guard section == .zero else {
             return .zero
         }
-        return interactor?.numberOfHistoryItems() ?? .zero
+        guard let numberOfHistoryItems = interactor?.numberOfHistoryItems() else {
+            return .zero
+        }
+        return numberOfHistoryItems
     }
 
     func cellPresentation(for indexPath: IndexPath) -> FlickrImageCollectionViewCellPresentation? {

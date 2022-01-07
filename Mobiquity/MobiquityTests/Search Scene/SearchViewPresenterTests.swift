@@ -18,26 +18,20 @@ enum CustomError: Error {
 final class SearchViewPresenterTests: XCTestCase {
 
     private var view: MockSearchView!
-    private var interactor: SearchViewInteractor!
+    private var interactor: MockSearchViewInteractor!
     private var router: MockSearchViewRouter!
     private var sut: SearchViewPresenter!
-
-    private var mockSearchImagesService = MockSearchImageService()
-    private var mockSearchManager = MockSearchManager()
 
     override func setUp() {
         super.setUp()
         view = .init()
         router = .init()
-        interactor = SearchViewInteractor(
-            searchImagesService: mockSearchImagesService,
-            searchManageable: mockSearchManager
-        )
+        interactor = .init()
         sut = .init(view: view, router: router, interactor: interactor)
-        interactor.output = sut
+        interactor.stubbedOutput = sut
     }
 
-    func test_whenViewDidLoad_ThenTableViewCollectionViewPageTitleAndNavigationBarAreInvoked() {
+    func test_didLoad_InvokesTableViewCollectionViewPageTitleAndNavigationBar() {
         XCTAssertFalse(view.invokedPrepareTableView)
         XCTAssertFalse(view.invokedPreparePageTitle)
         XCTAssertFalse(view.invokedPrepareCollectionView)
@@ -56,42 +50,160 @@ final class SearchViewPresenterTests: XCTestCase {
         XCTAssertEqual(view.invokedPrepareNavigationBarCount, 1)
     }
 
-    func test_givenNotEmptySearchText_whenViewDidLoadAndSearched_ifThereAreResults_thenTableViewHiddenAndResultsAreShown() {
-        XCTAssertFalse(mockSearchImagesService.invokedGetImages)
+    func test_saveHistoryItem_InvokesInteractorSaveSearchHistoryItem() {
+        XCTAssertFalse(interactor.invokedSaveSearchHistoryItem)
+        XCTAssertEqual(interactor.invokedSaveSearchHistoryItemCount, .zero)
+        sut.saveHistoryItem(item: "")
+        XCTAssertTrue(interactor.invokedSaveSearchHistoryItem)
+        XCTAssertEqual(interactor.invokedSaveSearchHistoryItemCount, 1)
+    }
 
-        // Given
-        let searchText = "Dummy"
-        let result = PhotosContainerDTO(
-            photos: Photos(
-                page: 1,
-                pages: 10,
-                perpage: 10,
-                total: 100,
-                photo: [
-                    PhotoDTO(
-                        id: "",
-                        owner: "",
-                        secret: "",
-                        server: "",
-                        farm: nil,
-                        title: "",
-                        ispublic: nil,
-                        isfriend: nil,
-                        isfamily: nil
-                    )
-                ]
-            ), stat: ""
+    func test_historyItemPresentation_IfThereIsAGetSearchHistoryItem_InvokesInteractorGetSearchHistoryItem() {
+        let prevCount = interactor.invokedGetSearchHistoryItemCount
+        interactor.stubbedGetSearchHistoryItemResult = "dummy result"
+        let result = sut.historyItemPresentation(for: .zero)
+        let nextCount = interactor.invokedGetSearchHistoryItemCount
+        XCTAssertEqual("dummy result", result)
+        XCTAssertTrue(interactor.invokedGetSearchHistoryItem)
+        XCTAssertEqual(prevCount + 1, nextCount)
+    }
+
+    func test_historyItemPresentation_IfInteractorIsNil_ResultIsEmptyString() {
+        sut = .init(view: view, router: router, interactor: nil)
+        let result = sut.historyItemPresentation(for: .zero)
+        XCTAssertEqual("", result)
+    }
+
+    func test_numberOfItemsForTableView_IfSectionIsNotZero_ResultIsZero() {
+        let notZeroNumber = Int.random(in: 1..<Int.max)
+        let result = sut.numberOfItemsForTableView(for: notZeroNumber)
+        XCTAssertEqual(result, .zero)
+    }
+
+    func test_numberOfItemsForTableView_IfSectionIsZero_InvokesInteractorNumberOfHistoryItems() {
+        let randomNumberOfItems = Int.random(in: 0..<Int.max)
+        interactor.stubbedNumberOfHistoryItemsResult = randomNumberOfItems
+        let result = sut.numberOfItemsForTableView(for: .zero)
+        XCTAssertTrue(interactor.invokedNumberOfHistoryItems)
+        XCTAssertEqual(result, randomNumberOfItems)
+    }
+
+    func test_numberOfItemsForTableView_IfInteractorIsNil_ResultIsZero() {
+        sut = .init(view: view, router: router, interactor: nil)
+        let result = sut.numberOfItemsForTableView(for: .zero)
+        XCTAssertEqual(result, .zero)
+    }
+
+    func test_cellPresentation_IfIndexPathSectionIsNotZero_ResultIsNil() {
+        let randomNotZeroSection = Int.random(in: 1..<Int.max)
+        let randomRow = Int.random(in: 0..<Int.max)
+        let indexPath = IndexPath(row: randomRow, section: randomNotZeroSection)
+        let cellPresentation = sut.cellPresentation(for: indexPath)
+        XCTAssertNil(cellPresentation)
+    }
+
+    func test_cellPresentation_IfIndexPathSectionIsZeroAndThereAreCellPresentations_ResultIs() {
+        let photoDTOs = [
+            PhotoDTO(
+                id: "1",
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            ),
+            PhotoDTO(
+                id: "2",
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            )
+        ]
+
+        let randomRow = Int.random(in: .zero..<photoDTOs.count)
+        let indexPath = IndexPath(row: randomRow, section: .zero)
+        sut.handleDtoTransformation(result: .success(photoDTOs))
+        let cellPresentation = sut.cellPresentation(for: indexPath)
+        let selectedCellPresentation = FlickrImageCollectionViewCellPresentation(
+            id: photoDTOs[indexPath.row].id ?? "",
+            url: photoDTOs[indexPath.row].getURL()
         )
+        XCTAssertEqual(cellPresentation?.id ?? "", selectedCellPresentation.id)
+    }
 
-        mockSearchImagesService.stubbedGetImagesCompletionResult = Result<PhotosContainerDTO, Error>.success(result)
+    func test_clearSearchResults_InvokesInteractorResetAndViewReloadCollectionMethods() {
+        let photoDTOs = [
+            PhotoDTO(
+                id: "1",
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            ),
+            PhotoDTO(
+                id: "2",
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            )
+        ]
+        sut.handleDtoTransformation(result: .success(photoDTOs))
+        let prevNumberOfRows = sut.numberOfItems(for: .zero)
+        let prevResetCount = interactor.invokedResetCount
+        sut.clearSearchResults()
+        let nextResetCount = interactor.invokedResetCount
+        let nextNumberOfRows = sut.numberOfItems(for: .zero)
+        XCTAssertTrue(interactor.invokedReset)
+        XCTAssertEqual(prevResetCount + 1, nextResetCount)
+        XCTAssertTrue(view.invokedReloadCollectionView)
+        XCTAssertNotEqual(prevNumberOfRows, nextNumberOfRows)
+        XCTAssertEqual(nextNumberOfRows, .zero)
+    }
 
-        // When
-        sut.viewDidLoad()
-        let prevCollectionViewCallCount = view.invokedPrepareCollectionViewCount
-        sut.searchImages(with: searchText)
-        let nextCollectionViewCallCount = view.invokedPrepareCollectionViewCount
-        // Then
-        XCTAssertTrue(mockSearchImagesService.invokedGetImages)
-        XCTAssertEqual(prevCollectionViewCallCount + 1, nextCollectionViewCallCount)
+    func test_searchImages_InvokesInteractorSearch() {
+        let text = "Dummy Text"
+        sut.searchImages(with: text)
+        XCTAssertTrue(interactor.invokedSearch)
+    }
+
+    func test_numberOfItems_IfSectionIsNotZero_ReturnsZero() {
+        let randomNotZeroSection = Int.random(in: 1..<Int.max)
+        let result = sut.numberOfItems(for: randomNotZeroSection)
+        XCTAssertEqual(result, .zero)
+    }
+
+    func test_handleDtoTransformation_IfResultIsPhotoReachesEndError_InvokesViewShowError() {
+        let result = Result<[PhotoDTO], ImageServiceError>.failure(ImageServiceError.photosReachedEnd)
+        interactor.output?.handleDtoTransformation(result: result)
+        XCTAssertTrue(view.invokedShowError)
+        XCTAssertEqual(view.invokedShowErrorParameters?.0, "Error")
+        XCTAssertEqual(view.invokedShowErrorParameters?.1, "There are no more photos")
+        XCTAssertEqual(view.invokedShowErrorParameters?.2, .alert)
+    }
+
+    func test_handleDtoTransformation_IfResultIsPhotosCouldNotBeRetrievedError_InvokesViewShowError() {
+        let result = Result<[PhotoDTO], ImageServiceError>.failure(ImageServiceError.photosCouldNotBeRetrieved)
+        interactor.output?.handleDtoTransformation(result: result)
+        XCTAssertTrue(view.invokedShowError)
+        XCTAssertEqual(view.invokedShowErrorParameters?.0, "Error")
+        XCTAssertEqual(view.invokedShowErrorParameters?.1, "Photos could not be retrieved. Try again later")
+        XCTAssertEqual(view.invokedShowErrorParameters?.2, .alert)
     }
 }
