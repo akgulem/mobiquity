@@ -7,6 +7,7 @@
 
 import Foundation
 
+// swiftlint:disable type_name
 struct FlickrImageCollectionViewCellPresentation: Hashable {
 
     let id: String

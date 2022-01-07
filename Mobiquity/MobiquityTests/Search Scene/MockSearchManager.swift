@@ -12,6 +12,7 @@ import Network
 final class MockSearchManager: SearchManageable {
 
     var invokedNumberOfSearchHistoriesGetter = false
+    // swiftlint:disable identifier_name
     var invokedNumberOfSearchHistoriesGetterCount = 0
     var stubbedNumberOfSearchHistories: Int! = 0
 
@@ -24,6 +25,7 @@ final class MockSearchManager: SearchManageable {
     var invokedGetSearchHistoryItem = false
     var invokedGetSearchHistoryItemCount = 0
     var invokedGetSearchHistoryItemParameters: (index: Int, Void)?
+    // swiftlint:disable identifier_name
     var invokedGetSearchHistoryItemParametersList = [(index: Int, Void)]()
     var stubbedGetSearchHistoryItemResult: String! = ""
 
@@ -38,6 +40,7 @@ final class MockSearchManager: SearchManageable {
     var invokedSaveSearchHistoryItem = false
     var invokedSaveSearchHistoryItemCount = 0
     var invokedSaveSearchHistoryItemParameters: (item: String, Void)?
+    // swiftlint:disable identifier_name
     var invokedSaveSearchHistoryItemParametersList = [(item: String, Void)]()
 
     func saveSearchHistoryItem(item: String) {

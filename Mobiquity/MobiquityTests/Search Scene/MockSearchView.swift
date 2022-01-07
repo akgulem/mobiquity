@@ -25,6 +25,7 @@ final class MockSearchView: SearchViewInterface {
 
     var invokedShowError = false
     var invokedShowErrorCount = 0
+    // swiftlint:disable large_tuple
     var invokedShowErrorParameters: (title: String, message: String, preferredStyle: UIAlertController.Style)?
     var invokedShowErrorParametersList = [(title: String, message: String, preferredStyle: UIAlertController.Style)]()
 

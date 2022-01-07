@@ -49,7 +49,7 @@ final class MockSearchImageService: SearchImagesServiceProtocol {
         invokedGetImagesCount += 1
         invokedGetImagesParameters = (text, page, perPage)
         invokedGetImagesParametersList.append((text, page, perPage))
-        guard var stubbedCompletionResult = stubbedGetImagesCompletionResult else {
+        guard let stubbedCompletionResult = stubbedGetImagesCompletionResult else {
             completion(.failure(NSError.init()))
             return
         }
