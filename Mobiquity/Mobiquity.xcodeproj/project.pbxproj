@@ -10,7 +10,6 @@
 		7672B6B427862109003C8740 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6B327862109003C8740 /* AppDelegate.swift */; };
 		7672B6BD2786210C003C8740 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7672B6BC2786210C003C8740 /* Assets.xcassets */; };
 		7672B6C02786210C003C8740 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7672B6BE2786210C003C8740 /* LaunchScreen.storyboard */; };
-		7672B6CB2786210D003C8740 /* MobiquityTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6CA2786210D003C8740 /* MobiquityTests.swift */; };
 		7672B6D52786210D003C8740 /* MobiquityUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D42786210D003C8740 /* MobiquityUITests.swift */; };
 		7672B6D72786210D003C8740 /* MobiquityUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */; };
 		7672B6E92786242B003C8740 /* UICollectionView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7672B6E82786242B003C8740 /* UICollectionView+Extension.swift */; };
@@ -66,7 +65,6 @@
 		7672B6BF2786210C003C8740 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7672B6C12786210C003C8740 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7672B6C62786210D003C8740 /* MobiquityTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobiquityTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7672B6CA2786210D003C8740 /* MobiquityTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityTests.swift; sourceTree = "<group>"; };
 		7672B6D02786210D003C8740 /* MobiquityUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MobiquityUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7672B6D42786210D003C8740 /* MobiquityUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITests.swift; sourceTree = "<group>"; };
 		7672B6D62786210D003C8740 /* MobiquityUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MobiquityUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -165,7 +163,6 @@
 			isa = PBXGroup;
 			children = (
 				7675493427883C5100A37870 /* Search Scene */,
-				7672B6CA2786210D003C8740 /* MobiquityTests.swift */,
 			);
 			path = MobiquityTests;
 			sourceTree = "<group>";
@@ -507,7 +504,6 @@
 				7675493927883C8500A37870 /* MockSearchViewInteractor.swift in Sources */,
 				7675493E278865ED00A37870 /* MockSearchImageService.swift in Sources */,
 				76754940278865F900A37870 /* MockSearchManager.swift in Sources */,
-				7672B6CB2786210D003C8740 /* MobiquityTests.swift in Sources */,
 				7675493B27883C8500A37870 /* MockSearchView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
