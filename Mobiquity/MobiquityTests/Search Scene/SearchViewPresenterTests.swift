@@ -189,6 +189,41 @@ final class SearchViewPresenterTests: XCTestCase {
         XCTAssertEqual(result, .zero)
     }
 
+    func test_handleDtoTransformation_IfPhotoDTOIdsAreNil_CellPresentationIdsAreEmptyString() {
+        let photoDTOs = [
+            PhotoDTO(
+                id: nil,
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            ),
+            PhotoDTO(
+                id: nil,
+                owner: "",
+                secret: "",
+                server: "",
+                farm: .zero,
+                title: "",
+                ispublic: .zero,
+                isfriend: .zero,
+                isfamily: .zero
+            )
+        ]
+        sut.handleDtoTransformation(result: .success(photoDTOs))
+        guard let firstCellPresentation = sut.cellPresentation(for: IndexPath(row: .zero, section: .zero)),
+              let secondCellPresentation = sut.cellPresentation(for: IndexPath(row: .zero, section: .zero)) else {
+                  XCTFail("Cell presentations are nil. Can't be proceeded.")
+            return
+        }
+        XCTAssertEqual(firstCellPresentation.id, "")
+        XCTAssertEqual(secondCellPresentation.id, "")
+    }
+
     func test_handleDtoTransformation_IfResultIsPhotoReachesEndError_InvokesViewShowError() {
         let result = Result<[PhotoDTO], ImageServiceError>.failure(ImageServiceError.photosReachedEnd)
         interactor.output?.handleDtoTransformation(result: result)
