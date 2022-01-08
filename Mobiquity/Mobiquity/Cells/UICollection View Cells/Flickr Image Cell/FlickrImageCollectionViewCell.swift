@@ -31,10 +31,6 @@ final class FlickrImageCollectionViewCell: UICollectionViewCell {
         self.indexPath = indexPath
     }
 
-    public override var intrinsicContentSize: CGSize {
-        return flickrImageView.image?.size ?? .zero
-    }
-
     private func updateUI() {
         if let url = URL(string: presentation?.url ?? "") {
             flickrImageView.kf.setImage(with: url)
