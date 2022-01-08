@@ -95,7 +95,7 @@ extension SearchViewInteractor: SearchViewInteractorInterface {
     }
 
     func reset() {
-        self.page = 1
-        self.photoDTOs.removeAll()
+        page = 1
+        photoDTOs.removeAll()
     }
 }
