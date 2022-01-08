@@ -13,9 +13,9 @@ public struct ImageSearchParameters {
     var page: Int?
     var perPage: Int?
 
-    public init() {
-        text = "Pendik"
-        page = 1
-        perPage = 10
+    public init(text: String, page: Int?, perPage: Int?) {
+        self.text = text
+        self.page = page
+        self.perPage = perPage
     }
 }

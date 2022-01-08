@@ -12,6 +12,14 @@ public struct Photos: Decodable {
     public let page: Int?
     public let pages: Int?
     public let perpage: Int?
-    public let total: String?
+    public let total: Int?
     public let photo: [PhotoDTO]?
+
+    public init(page: Int?, pages: Int?, perpage: Int?, total: Int?, photo: [PhotoDTO]?) {
+        self.page = page
+        self.pages = pages
+        self.perpage = perpage
+        self.total = total
+        self.photo = photo
+    }
 }

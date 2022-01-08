@@ -57,7 +57,7 @@ extension FlickrRequestCollection: Request {
     public var path: String {
         switch self {
         case .getImages:
-            return ""
+            return "/services/rest/"
         }
     }
 
@@ -65,6 +65,13 @@ extension FlickrRequestCollection: Request {
         var queryItems = [URLQueryItem]()
         let apiKeyQueryItem = URLQueryItem(name: "api_key", value: apiKey)
         queryItems.append(apiKeyQueryItem)
+        let responseFormatQueryItem = URLQueryItem(name: "format", value: responseFormat)
+        queryItems.append(responseFormatQueryItem)
+        let safeSearchQueryItem = URLQueryItem(name: "safe_search", value: "1")
+        queryItems.append(safeSearchQueryItem)
+
+        let jsonCallBackQueryItem = URLQueryItem(name: "nojsoncallback", value: "1")
+        queryItems.append(jsonCallBackQueryItem)
 
         switch self {
         case .getImages(let parameters):

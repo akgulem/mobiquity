@@ -7,8 +7,13 @@
 
 import Foundation
 
-struct PhotosContainerDTO: Decodable {
+public struct PhotosContainerDTO: Decodable {
     
-    let photos: Photos?
-    let stat: String?
+    public let photos: Photos?
+    public let stat: String?
+
+    public init(photos: Photos?, stat: String?) {
+        self.photos = photos
+        self.stat = stat
+    }
 }
