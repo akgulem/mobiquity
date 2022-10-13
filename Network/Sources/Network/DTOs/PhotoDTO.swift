@@ -18,8 +18,9 @@ public struct PhotoDTO: Decodable {
     public let ispublic: Int?
     public let isfriend: Int?
     public let isfamily: Int?
+    public var data: Data?
 
-    public init(id: String?, owner: String?, secret: String?, server: String?, farm: Int?, title: String?, ispublic: Int?, isfriend: Int?, isfamily: Int?) {
+    public init(id: String?, owner: String?, secret: String?, server: String?, farm: Int?, title: String?, ispublic: Int?, isfriend: Int?, isfamily: Int?, data: Data? = nil) {
         self.id = id
         self.owner = owner
         self.secret = secret
@@ -29,6 +30,7 @@ public struct PhotoDTO: Decodable {
         self.ispublic = ispublic
         self.isfriend = isfriend
         self.isfamily = isfamily
+        self.data = data
     }
 }
 
